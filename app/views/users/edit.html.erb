@@ -1,0 +1,37 @@
+<div>
+
+<h1> Edit Profile </h1>
+<br><br><br>
+
+<form action='/users/<%= @user.id %>' method='post'>
+  <input type="hidden" name="_method" value="patch">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+  <label for='user[email]'>Email : </label>
+  <input  id='Email' type='email' name='email' value="<%= @user.email %>"><br>
+  <% if flash[:error] %>
+  <% if flash[:error]['email'] %>
+      <% flash[:error]['email'].each do |error| %>
+        <span> | Email <%= error %> | </span>
+      <% end %><br>
+    <% end %>
+  <% end %>
+  <br>
+
+  <label for='user[name]'>Name : </label>
+  <input id='Name' type='text' name='name' value="<%= @user.name %>"><br>
+  <% if flash[:error] %>
+  <% if flash[:error]['name'] %>
+      <% flash[:error]['name'].each do |error| %>
+        <span> | Name <%= error %> | </span>
+      <% end %><br>
+    <% end %>
+  <% end %>
+  <br>
+  <br><br><br><br>
+  <input id="btn" type="submit" value="Update">
+</form>
+<form action='/users/<%= current_user.id %>' method='post'>
+  <input type="hidden" name="_method" value="delete">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+  <input id="btn" type="submit" value="Delete Account">
+</form>

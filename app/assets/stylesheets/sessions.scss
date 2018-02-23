@@ -1,0 +1,19 @@
+// Place all the styles related to the sessions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+ul{
+    list-style-type: none;
+    font-size: 1em;
+}
+
+li{
+    color : red;
+}
+
+.btn{
+    width : 100px;
+    background-color: blue;
+    color : white;
+    margin-left: 250px;
+}

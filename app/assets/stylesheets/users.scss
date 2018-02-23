@@ -1,0 +1,28 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+label {
+    width: 500px;
+}
+
+input{
+    width : 250px;
+}
+
+#btn, .btn{
+    width : 100px;
+    background-color: blue;
+    color : white;
+    margin-left: 250px;
+}
+
+.div{
+    // padding-left : 150px;
+    display: inline-block;
+}
+
+span{
+    font-size:  0.8em;
+    color : red;
+}

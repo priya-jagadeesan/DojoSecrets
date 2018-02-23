@@ -1,0 +1,45 @@
+<div class='div'>
+    <h3><%= @user.name %></h3>
+    <p><a href='/secrets'>Secrets Dashboard</a></p>
+    <p><a href='/users/<%= @user.id %>/edit'>Edit Profile</a></p>
+</div>
+<div>
+    <h4>New Secret</h4>
+    <form method='post' action='/secrets'>
+        <% if flash[:secret] %>
+        <% flash[:secret].each do |secret| %>
+            <% secret.each do |error| %>
+            <span class="text-danger"><%= error %></span>
+        <% end %>    
+        <% end %>
+        <% end %>
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <div class="form-group <%= flash[:has_Error] %>">
+            <textarea class="form-control" rows="10"  cols="100" name='Content'></textarea>
+        </div>
+        <input class="btn btn-primary" type='submit' value='Create Secret'>
+    </form>
+</div>
+<div>
+<h3>Secrets</h3>
+<% if @user.secrets %>
+    <% @user.secrets.each do |secret| %>
+        <%= secret.content %>
+        <form method="post" action="/secrets/<%= secret.id %>">
+            <input type="hidden" name="_method" value="delete">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <input class="btn btn-primary" type='submit' value='Delete Secret'>
+        </form>
+    <% end %>
+<% end %>
+</div>
+
+<div>
+
+<h3>Secrets Liked</h3>
+<% if @user.secrets_liked %>
+    <% @user.secrets_liked.each do |secret| %>
+        <p><%= secret.content %></p>
+    <% end %>
+<% end %>
+</div>

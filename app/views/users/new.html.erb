@@ -1,0 +1,42 @@
+<p><a href='/sessions/new'>Login</a></p>
+<div>
+<h1> Register </h1>
+<br><br><br>
+
+<form action='/users' method='post'>
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+  <label for='user[email]'>Email : </label>
+  <input  id='Email' type='email' name='user[email]' placeholder="xyz@abc.com"><br>
+  <% if flash[:error] %>
+  <% if flash[:error]['email'] %>
+      <% flash[:error]['email'].each do |error| %>
+        <span> | Email <%= error %> | </span>
+      <% end %><br>
+    <% end %>
+  <% end %>
+  <br>
+  <label for='user[name]'>Name : </label>
+  <input id='Name' type='text' name='user[name]' placeholder="First Last"><br>
+  <% if flash[:error] %>
+  <% if flash[:error]['name'] %>
+      <% flash[:error]['name'].each do |error| %>
+        <span> | Name <%= error %> | </span>
+      <% end %><br>
+    <% end %>
+  <% end %>
+  <br>
+  <label for='user[password]'>Password : </label>
+  <input  id='Password' type='password' name='user[password]' placeholder=""><br>
+  <% if flash[:error] %>
+    <% if flash[:error]['name'] %>
+        <% flash[:error]['name'].each do |error| %>
+            <span> | Passwords <%= error %> | </span>
+        <% end %><br>
+    <% end %>
+  <% end %>
+  <br>
+  <label for='user[password_confirmation]'>Confirm Password : </label>
+  <input  id='Password_Confirmation' type='password' name='user[password_confirmation]'><br><br><br><br>
+  <input id="btn" type="submit" value="Join">
+</form>
+</div>

@@ -1,0 +1,28 @@
+<div>
+
+<h1> Login </h1>
+<br><br>
+
+    <% flash.each do |key, value| %>
+        <% if key == 'error' %>
+            <ul class="error_container">
+            <% value.each do |field, errors| %>
+                <% errors.each do |error| %>
+                    <li><%= field.capitalize %> <%= error %></li>
+                <% end %>
+            <% end %>
+            <ul>
+        <% end %>
+    <% end %>
+
+<br>
+
+<form action='/sessions' method='post'>
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+  <label for='user[email]'>Email : </label>
+  <input id="Email" type='email' name='user[email]' placeholder="xyz@abc.com"><br><br>
+  <label for='user[password]'>Password : </label>
+  <input id="Password" type='password' name='user[password]' placeholder=""><br><br>
+  <input id="btn" type="submit" value="Log In">
+</form>
+</div>
